@@ -32,8 +32,7 @@ namespace KomodoGreenPlan.ConsoleApp
                     ViewAllVehicles();
                     break;
                 case "3":
-                    //ViewVehiclesByEngineType
-                    //_repo.GetCarByCarType();
+                    ViewVehiclesByEngineType();
                     break;
                 case "4":
                     //UpdateAVehicle();
@@ -73,6 +72,17 @@ namespace KomodoGreenPlan.ConsoleApp
             // Console.WriteLine($"{allCars}");
             PrintCars(allCars);
         }
+        private void ViewVehiclesByEngineType()
+        {
+            Console.WriteLine("Gas\n" + "Hybrid\n" + "Electric\n");
+            string engineSelection = _repo.GetUserInput();
+            // string engineType.ToString = EngineSelection(engineSelection);
+
+            List<Cars> engineType = _repo.GetCarByCarType(engineSelection);
+            
+            PrintCars(engineType);
+        }
+        //Helpers
         private void PrintCars(List<Cars> car)
         {
             foreach (Cars x in car)
@@ -88,7 +98,6 @@ namespace KomodoGreenPlan.ConsoleApp
 
         }
 
-        //Helpers
         private CarType? EngineSelection(string engineSelection)
         {
             switch(engineSelection)

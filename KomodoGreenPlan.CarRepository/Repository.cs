@@ -22,14 +22,14 @@ namespace KomodoGreenPlan.CarRepository
             return _carDB;
         }
 
-        public List<Cars> GetCarByCarType(string userInput)
+        public List<Cars> GetCarByCarType(string engineSelection)
         {
             List<Cars> carList = new List<Cars>();
 
             foreach (Cars x in _carDB)
             {
                 string carType = x.CarType.ToString();
-                if (carType == userInput)
+                if (carType == engineSelection)
                 {
                     carList.Add(x);
                 }

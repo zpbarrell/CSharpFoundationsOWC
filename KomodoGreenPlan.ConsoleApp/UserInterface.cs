@@ -29,8 +29,7 @@ namespace KomodoGreenPlan.ConsoleApp
                     CreateNewVehicle();
                     break;
                 case "2":
-                    //ViewAllVehicles
-                    _repo.GetAllCars();
+                    ViewAllVehicles();
                     break;
                 case "3":
                     //ViewVehiclesByEngineType
@@ -48,6 +47,7 @@ namespace KomodoGreenPlan.ConsoleApp
                     break;
             }
         }
+        //Create
         private void CreateNewVehicle()
         {
             Console.Write("Enter Make of car: ");
@@ -66,6 +66,29 @@ namespace KomodoGreenPlan.ConsoleApp
             _repo.AddCarToDatabase(newCar);
 
         }
+        //Read
+        private void ViewAllVehicles()
+        {
+            List<Cars> allCars = _repo.GetAllCars();
+            // Console.WriteLine($"{allCars}");
+            PrintCars(allCars);
+        }
+        private void PrintCars(List<Cars> car)
+        {
+            foreach (Cars x in car)
+            {
+                PrintCar(x);
+            }
+        }
+        private void PrintCar(Cars car)
+        {
+            Console.WriteLine($"Make: {car.Make}\n" +
+                             $"Model: {car.Model}\n" +
+                             $"Engine Type: {car.CarType}\n");
+
+        }
+
+        //Helpers
         private CarType? EngineSelection(string engineSelection)
         {
             switch(engineSelection)
@@ -78,7 +101,6 @@ namespace KomodoGreenPlan.ConsoleApp
                     return CarType.Electric;
                 default:
                     return null;
-                    break;
             }
 
         }

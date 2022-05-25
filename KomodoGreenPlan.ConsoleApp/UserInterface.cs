@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KomodoGreenPlan.Repository;
+using KomodoGreenPlan.CarRepository;
 
 namespace KomodoGreenPlan.ConsoleApp
 {
     public class UserInterface
     {
         //field
-        CarRepository _repo = new CarRepository();
+        Repository _repo = new Repository();
         bool isRunning = true;
         public void Run()
         {

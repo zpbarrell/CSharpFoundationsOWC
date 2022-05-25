@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KomodoGreenPlan.Repository
+namespace KomodoGreenPlan.CarRepository
 {
-    public class CarRepository
+    public class Repository
     {
         //Empty Constructor
         Cars myCars = new Cars();

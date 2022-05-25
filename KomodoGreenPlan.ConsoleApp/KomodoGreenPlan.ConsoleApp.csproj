@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\KomodoGreenPlan.Repository\KomodoGreenPlan.Repository.csproj" />
+    <ProjectReference Include="..\KomodoGreenPlan.CarRepository\KomodoGreenPlan.CarRepository.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

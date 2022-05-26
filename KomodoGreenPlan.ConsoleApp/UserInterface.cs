@@ -38,8 +38,7 @@ namespace KomodoGreenPlan.ConsoleApp
                     //UpdateAVehicle();
                     break;
                 case "5":
-                    //DeleteAVehicle
-                    //_repo.DeleteCarFromDatabase();
+                    DeleteAVehicle();
                     break;
                 default:
                     //InvalidEntry();
@@ -81,6 +80,27 @@ namespace KomodoGreenPlan.ConsoleApp
             List<Cars> engineType = _repo.GetCarByCarType(engineSelection);
             
             PrintCars(engineType);
+        }
+        private void DeleteAVehicle()
+        {
+            ViewAllVehicles();
+            Console.Write("Enter A Vehicle Make To Delete: ");
+            string vehicleToDelete = _repo.GetUserInput();
+            Cars carToDelete = _repo.GetCarByModel(vehicleToDelete);
+            if(carToDelete != null)
+            {
+                bool deleteSuccessful = _repo.DeleteCarFromDatabase(carToDelete);
+                if(deleteSuccessful)
+                {
+                    Console.WriteLine($"{vehicleToDelete} successfully deleted from database.");
+                }
+                else{
+                    Console.WriteLine("No such vehicle found in database. Please try again");
+                }
+            }
+            else {
+                Console.WriteLine($"{vehicleToDelete} not found in database.");
+            }
         }
         //Helpers
         private void PrintCars(List<Cars> car)

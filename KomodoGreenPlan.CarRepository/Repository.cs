@@ -39,6 +39,17 @@ namespace KomodoGreenPlan.CarRepository
         //Update
 
         //Delete
+        public Cars GetCarByModel(string model)
+        {
+            foreach(Cars x in _carDB)
+            {
+                if(model == x.Model)
+                    {
+                        return x;
+                    }
+            }
+            return null;
+        }
         public bool DeleteCarFromDatabase(Cars car)
         {
             int totalCarsinDB = _carDB.Count();

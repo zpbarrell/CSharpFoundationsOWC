@@ -37,7 +37,21 @@ namespace KomodoGreenPlan.CarRepository
             return carList;
         }
         //Update
+        public bool UpdateCars(Cars car)
+        {
+            foreach(Cars existingCars in _carDB)
+            {
+                if(existingCars.Model == car.Model)
+                {
+                    existingCars.Make = car.Make;
+                    existingCars.Model = car.Model;
+                    existingCars.CarType = car.CarType;
 
+                    return true;
+                }
+            }
+            return false;
+        }
         //Delete
         public Cars GetCarByModel(string model)
         {

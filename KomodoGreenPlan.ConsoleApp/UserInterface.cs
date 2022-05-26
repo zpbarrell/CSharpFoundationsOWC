@@ -35,7 +35,7 @@ namespace KomodoGreenPlan.ConsoleApp
                     ViewVehiclesByEngineType();
                     break;
                 case "4":
-                    //UpdateAVehicle();
+                    UpdateAVehicle();
                     break;
                 case "5":
                     DeleteAVehicle();
@@ -68,7 +68,6 @@ namespace KomodoGreenPlan.ConsoleApp
         private void ViewAllVehicles()
         {
             List<Cars> allCars = _repo.GetAllCars();
-            // Console.WriteLine($"{allCars}");
             PrintCars(allCars);
         }
         private void ViewVehiclesByEngineType()
@@ -81,10 +80,40 @@ namespace KomodoGreenPlan.ConsoleApp
             
             PrintCars(engineType);
         }
+        //UPDATE
+        private void UpdateAVehicle()
+        {
+            ViewAllVehicles();
+            Console.Write("Enter A Vehicle Model To Update: ");
+            string vehicleToUpdate = _repo.GetUserInput();
+            Cars car = _repo.GetCarByModel(vehicleToUpdate);
+            // Cars carToUpdate = _repo.UpdateCars(vehicleToUpdate);
+            if(car != null)
+            {
+                PrintCar(car);
+                Console.Write("New Make: ");
+                string newMake = _repo.GetUserInput();
+
+                Console.Write("New Model: ");
+                string newModel = _repo.GetUserInput();
+
+                Console.Write("New Engine Type\n" + "1. Gas\n" + "2. Hybrid\n" + "3. Electric\n");
+                string newEngineType = _repo.GetUserInput();
+
+                CarType? newCarType = car.CarType;
+
+                EngineSelection(newEngineType);
+
+                Cars updatedCars = new Cars(newMake, newModel, newCarType);
+
+            }
+
+        }
+        //DELETE
         private void DeleteAVehicle()
         {
             ViewAllVehicles();
-            Console.Write("Enter A Vehicle Make To Delete: ");
+            Console.Write("Enter A Vehicle Model To Delete: ");
             string vehicleToDelete = _repo.GetUserInput();
             Cars carToDelete = _repo.GetCarByModel(vehicleToDelete);
             if(carToDelete != null)

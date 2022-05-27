@@ -34,7 +34,7 @@ namespace MoldyPotatoes.Repository
             }
             return null;
         }
-        public List<Movie> GetMoviesByTitleSearch(string movieTitle)
+        public List<Movie> GetMoviesByTitleSearch(string movie//Title)
         {
             List<Movie> movieList = new List<Movie>();
 

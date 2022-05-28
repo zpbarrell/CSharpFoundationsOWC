@@ -23,6 +23,5 @@ namespace KomodoGreenPlan.CarRepository
         //Empty
         public Cars() { }
     }
-    //Enum Car {Gas, Hybrid, Electric }
     public enum CarType { Gas, Hybrid, Electric }
 }

@@ -7,11 +7,7 @@ namespace KomodoGreenPlan.CarRepository
 {
     public class Repository
     {
-        //Empty Constructor
-        // Cars myCars = new Cars();
-        //Database
         List<Cars> _carDB = new List<Cars>();
-        //Methods to be used in CRUD
         public void AddCarToDatabase(Cars car)
         {
             _carDB.Add(car);
@@ -80,14 +76,7 @@ namespace KomodoGreenPlan.CarRepository
         {
             Console.WriteLine("1. New Vehicle Entry.\n" + "2. View All Vehicles.\n" + "3. View Vehicles By Engine Type\n" + "4. Update A Vehicle.\n" + "5. Delete A Vehicle");
         }
-        //New Vehicle Entry
-        //Veiw All
-        //Veiw by Car Type
-        //Gas
-        //Hybrid
-        //Electric
-        //Update a vehicle
-        //Delete a Vehicle
+        
         public string GetUserInput()
         {
             return Console.ReadLine();

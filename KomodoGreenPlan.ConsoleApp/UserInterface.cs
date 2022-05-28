@@ -74,7 +74,6 @@ namespace KomodoGreenPlan.ConsoleApp
         {
             Console.WriteLine("Gas\n" + "Hybrid\n" + "Electric\n");
             string engineSelection = _repo.GetUserInput();
-            // string engineType.ToString = EngineSelection(engineSelection);
 
             List<Cars> engineType = _repo.GetCarByCarType(engineSelection);
             

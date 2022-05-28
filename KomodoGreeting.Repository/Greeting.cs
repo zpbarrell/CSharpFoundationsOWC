@@ -20,11 +20,6 @@ namespace KomodoGreeting.Repository
             Email = email;
         }
 
-        // public Greeting(string firstName, string lastName)
-        // {
-        //     FirstName = firstName;
-        //     LastName = lastName;
-        // }
     }
     public enum StatusType { Current, Potential, Past }
 }

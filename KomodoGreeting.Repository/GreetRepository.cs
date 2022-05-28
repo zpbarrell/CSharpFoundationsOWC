@@ -20,7 +20,7 @@ namespace KomodoGreeting.Repository
         string currentCustomer = "We appreciate your loyalty through these hard times. We exist only to serve you.";
         string potentialCustomer = "Its time for you to switch to Komodo Insurance. We have the lowest premiums in the multiverse!";
         string pastCustomer = "We miss you! Take a look at these great promotions, JUST FOR YOU!";
-        private string EmailSelectionSwitchCase(StatusType statusType)
+        public string EmailSelectionSwitchCase(StatusType statusType)
         {
             switch(statusType)
             {
@@ -52,6 +52,20 @@ namespace KomodoGreeting.Repository
                 return null;
             }
         }
+        public string ChangeUserInputToString(string userStatusSelection)
+        {
+            switch(userStatusSelection)
+            {
+                case "1":
+                    return "Current";
+                case "2": 
+                    return "Potential";
+                case "3":
+                    return "Past";
+                default:
+                    return "Potential";
+            }
+        }
         public List<Greeting> GetContactByType(string statusSelection)
         {
             List<Greeting> newContact = new List<Greeting>();
@@ -63,13 +77,34 @@ namespace KomodoGreeting.Repository
                     newContact.Add(x);
                 }
                 else{
-                    //return to main menu
+                    return null;
                 }
             }
             return newContact;
         }
         //Update
         //DELETE
+        public Greeting GetContactByLastName(string lastName)
+        {
+            foreach(Greeting x in _greetDB)
+            {
+                if(lastName == x.LastName)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+        public bool DeleteContactFromDatabase(Greeting contact)
+        {
+            int totalContactsInDatabase = _greetDB.Count();
+            _greetDB.Remove(contact);
+            if(totalContactsInDatabase == _greetDB.Count())
+            {
+                return false;
+            }
+            return true;
+        }
         //MainMenu
         public void PrintMainMenu()
         {
@@ -78,24 +113,6 @@ namespace KomodoGreeting.Repository
         public string GetUserInput()
         {
             return Console.ReadLine();
-        }
-        public string EmailOptions(string input)
-        {
-            switch(input)
-            {
-                case "1":
-                    return "yay";
-                    break;
-                case "2":
-                    return "hopeful";
-                    break;
-                case "3":
-                    return "bummer";
-                    break;
-                default:
-                    return "try again";
-                    break;
-            }
         }
         //SEED DATA
         public void SeedCustomerData()
